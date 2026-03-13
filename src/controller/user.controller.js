@@ -1,11 +1,12 @@
 import { profileCreated, profileUpdated } from "../config/index.js"
 import { User } from "../model/user.model.js"
 import { handleSendResponse, consoleError, handleError, AppError } from "../utils/index.js"
+import { validateCreateUserReqBody } from "../validation/user.validation.js"
 
 // handleCreateProfile
 export const handleCreateProfile = async (req,res) =>{
     try {
-        
+        const reqbody = validateCreateUserReqBody(req)
 
         handleSendResponse(res, 201,true,profileCreated,{})
         

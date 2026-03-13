@@ -4,3 +4,5 @@ export const allowedMethods = ["GET","POST","PUT","DELETE"]
 export const somethingWentWrongTxt = "Something went wrong. Please try again later."
 export const profileCreated = "Profile Created Successfully"
 export const profileUpdated = "Profile Updated Successfully"
+export const reqBodyNotPresentTxt = "request body is not present"
+export const allowedUserFields = ["fullName","age","skills","about","photoUrl"]
