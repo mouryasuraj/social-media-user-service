@@ -66,7 +66,7 @@ export const validateUpdateUserReqBody = (req) =>{
         { valid: age && (age<12 || age>100), message:"Age should be greater than 12 or less than 100" },
         { valid: skills && skills.length>60, message:"Skill limit exceeded more than 60" },
         { valid: about && about.trim().length>200, message:"About should be less than 200" },
-        { valid: photoUrl && validator.isURL(photoUrl) , message:"URL is not valid" },
+        { valid: photoUrl && !validator.isURL(photoUrl) , message:"URL is not valid" },
     ]
     
     for (const check of updateUserFieldValidation){

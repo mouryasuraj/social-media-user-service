@@ -1,3 +1,4 @@
+import isEmail from "validator/lib/isEmail.js"
 import { profileCreated, profileUpdated } from "../config/index.js"
 import { User } from "../model/user.model.js"
 import { handleSendResponse, consoleError, handleError, AppError } from "../utils/index.js"
@@ -52,12 +53,12 @@ export const handleUpdateProfile = async (req,res) =>{
 export const handleGetProfile = async (req,res)=>{
     try {
         const {userId} = req?.query
-        console.log(userId)
+        const {email, email_verified:isEmailVerified} = req.user
 
-        const profile = await User.findOne({userId})
+        const profile = await User.findOne({userId}).lean()
         if(!profile) throw new AppError("user not found", 404)
 
-        handleSendResponse(res, 200, true, "success",profile)
+        handleSendResponse(res, 200, true, "success",{...profile, email,isEmailVerified})
     } catch (error) {
         consoleError(error)
         const status = error.statusCode || 500;
