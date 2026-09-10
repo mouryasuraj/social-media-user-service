@@ -52,6 +52,7 @@ export const handleUpdateProfile = async (req,res) =>{
 // handleGetProfile
 export const handleGetProfile = async (req,res)=>{
     try {
+        console.log("Getting hit")
         const {userId} = req?.query
         const {email, email_verified:isEmailVerified} = req.user
 
